@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>To-Do List</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-input id="inputBox" type="text" placeholder="Enter Task Here" clearInput [(ngModel)]="addedItem" (keyup.enter)="addItem()"></ion-input>
+    <ion-note color="primary">Click and drag on the 3-bars icon to re-order list</ion-note>
+    <ion-list>
+      <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+        <ion-item *ngFor="let item of toDo;let i=index" >
+          <ion-reorder></ion-reorder>
+          {{item.item}}  
+          <ion-button shape="round" color="warning" (click)="removeItem(item.key)">Delete</ion-button>
+        </ion-item>
+      </ion-reorder-group>
+    </ion-list>
+  
+  </ion-content>
+  
+  
